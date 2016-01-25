@@ -1,0 +1,35 @@
+{{> header }}
+
+  <section class="achievements-fixed">
+    <div class="exit" onclick="window.JL.achievements.removeScreen()">&times;</div>
+    <!-- <div class="avatars">
+      <div class="avatar-swap-box no-select">
+        <div class="last" onclick="window.JL.avatars.swapLeft(event)"><span class="arrow">&larr;</span></div>
+        <div class="next" onclick="window.JL.avatars.swapRight(event)"><span class="arrow">&rarr;</span></div>
+        <div class="avatar-show-box">
+          <div class="avatar-backdrop">
+            <img class="avatar-is" id="avatar-is" src="/img/icons/male1.svg">
+          </div>
+        </div>
+      </div>
+      <h5 class="title">Choose your avatar</h5>
+    </div> -->
+    <div class="achievements">
+      <h2 class="achievements-title">Achievements</h2>
+      <div class="achlist" id="achievements-list">
+
+
+      </div>
+
+    </div>
+  </section>
+  <section class="body">
+    <div class="body_container">
+
+      {{{contents}}}
+
+    </div>
+  </section>
+  <!-- <section class="body-img" id="body-img"></section> -->
+
+{{> footer }}
