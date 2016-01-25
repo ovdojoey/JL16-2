@@ -20,6 +20,12 @@
     // bring up trophies
     achievements.makeScreen();
 
+    // listen for hash changes (route changes)
+    window.addEventListener("hashchange", function(){
+      checkRoute();
+    }, false);
+    checkRoute();
+
     scrollnimates.forEach( function ( sn ) {
       var clientOffsets = sn.getBoundingClientRect();
       sn.animationOffset = clientOffsets.top + scrollPosition;
@@ -62,6 +68,16 @@
     if ( !rAFstarted ) {
       rAFstarted = true;
       window.requestAnimationFrame(step);
+    }
+
+
+    function checkRoute() {
+      var location = window.location.hash;
+      if ( location === '#/cv' ) {
+        document.body.classList.add("lock");
+        document.body.classList.add("cv");
+      }
+      console.log(location);
     }
 
   }
@@ -170,6 +186,7 @@
       'LULLABY',
       'EXPERTCOMPOSER',
       'KEYSAMPLE',
+      'RECRUITER',
       'SAAVYRECRUITER',
       'HUECHANGER',
     ],
@@ -220,6 +237,11 @@
       {
         toAchieve: 'Click the CV link',
         points: '5',
+        trophy: '_metal',
+      },
+      {
+        toAchieve: 'Download the CV',
+        points: '25',
         trophy: '_metal',
       },
       {
@@ -305,9 +327,13 @@
     launchScreen : function (e) {
       e.stopPropagation();
       document.body.classList.add("lock");
+      document.body.classList.add("achievements");
     },
     removeScreen : function () {
       document.body.classList.remove("lock");
+      document.body.classList.remove("cv");
+      document.body.classList.remove("achievements");
+      window.location.hash = "#/";
     },
     toggleScreen : function () {
       document.body.classList.toggle("lock");

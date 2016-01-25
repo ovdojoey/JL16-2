@@ -1,7 +1,24 @@
 {{> header }}
+  <section class="sidebar-fixed">
+    <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
+    <div class="sidebar_content">
+      <h4 class="resume-title">Curriculum vitae</h4>
+      <h5 class="resume-highlights-title">Highlights</h5>
+      <ul class="resume-highlights">
+        <li>Fast, independent worker</li>
+        <li>Intensely passionate</li>
+        <li>A project finisher - no loose ends here</li>
+        <li>Knowledgable and eager to learn</li>
+        <li>Creative and design oriented</li>
+        <li>Very skilled with PHP, JavaScript, HTML5, Sass/CSS, and SQL</li>
+      </ul>
 
+      <a href="resume.pdf" target="_blank" class="btn btn-border" onclick="window.JL.achievements.activateAchievement('SAAVYRECRUITER')">Download CV</a>
+
+    </div>
+  </section>
   <section class="achievements-fixed">
-    <div class="exit" onclick="window.JL.achievements.removeScreen()">&times;</div>
+    <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
     <!-- <div class="avatars">
       <div class="avatar-swap-box no-select">
         <div class="last" onclick="window.JL.avatars.swapLeft(event)"><span class="arrow">&larr;</span></div>

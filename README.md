@@ -1,5 +1,5 @@
 #Joey Lea
 
-My website source code.
+My website source code.  Feel free to build your own Metalsmith site using the build.js file.
 
-Copyright (c) 2015 Copyright Holder All Rights Reserved.
+Copyright (c) 2016 Joey Lea. All Rights Reserved.
