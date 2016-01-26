@@ -80,6 +80,30 @@
       console.log(location);
     }
 
+
+    /* HOVER PICTURES */
+    var lastKeyUpAt = 0;
+    var hover_picture = document.getElementById("hover-picture");
+
+    function checkFanicer () {
+       var keyDownAt = new Date();
+       setTimeout(function() {
+           if (keyDownAt > lastKeyUpAt)
+               achievements.activateAchievement("FANCIER");
+
+       }, 10000);
+    }
+
+    function checkFanicerEnd () {
+       lastKeyUpAt = new Date();
+    }
+
+    // add event listener for achievement
+    hover_picture.addEventListener("mousedown", checkFanicer, false);
+    hover_picture.addEventListener("mouseup", checkFanicerEnd, false);
+    /* END HOVER PICTURES */
+
+
   }
 
   var errorBag = {
@@ -176,6 +200,8 @@
     aBox: document.getElementById('achievement-box'),
     aMents: document.getElementById('achievements'),
     aList: document.getElementById('achievements-list'),
+    scoreBox: document.getElementById('score-box'),
+    scoreAch: document.getElementById('score-ach'),
     activated: [],
     all: [
       'HOVERER',
@@ -189,65 +215,66 @@
       'RECRUITER',
       'SAAVYRECRUITER',
       'HUECHANGER',
+      'USETHESOURCE',
+      'HUNTRESS',
+      'FANCIER',
     ],
     details: [
       {
         toAchieve: 'Hover over a hotspot',
         points: '10',
-        trophy: '_metal',
       },
       {
         toAchieve: 'Activate the keyboard',
         points: '20',
-        trophy: '_metal',
-
       },
       {
-        toAchieve: 'Play Coldplay - Clocks on the keyboard',
-        points: '50',
-        trophy: '_big',
-
+        toAchieve: 'Play Coldplay - Clocks',
+        points: '200',
       },
       {
-        toAchieve: 'Play Bach - Minuet in G major on the keyboard',
+        toAchieve: 'Play Bach - Minuet in G major',
         points: '150',
-        trophy: '_advanced',
-
       },
       {
-        toAchieve: 'Play the JSTESTER combo on the keyboard',
+        toAchieve: 'Play the JSTESTER combo',
         points: '1250',
-        trophy: '_gold',
       },
       {
-        toAchieve: 'Play Mary Had A Little Lamb on the keyboard',
+        toAchieve: 'Play Mary Had A Little Lamb',
         points: '50',
-        trophy: '_big',
       },
       {
-        toAchieve: 'Play Fur Elise on the keyboard',
+        toAchieve: 'Play Fur Elise',
         points: '250',
-        trophy: '_advanced',
       },
       {
-        toAchieve: 'Play the KEYSAMPLE combo the keyboard',
+        toAchieve: 'Play the KEYSAMPLE combo',
         points: '150',
-        trophy: '_big',
       },
       {
         toAchieve: 'Click the CV link',
         points: '5',
-        trophy: '_metal',
       },
       {
         toAchieve: 'Download the CV',
         points: '25',
-        trophy: '_metal',
       },
       {
         toAchieve: 'Unlock the Hue Changing hotpot',
         points: '100',
-        trophy: '_metal',
+      },
+      {
+        toAchieve: 'View the source code on Github',
+        points: '30',
+      },
+      {
+        toAchieve: 'Peruse the portfolio',
+        points: '200',
+      },
+      {
+        toAchieve: 'Engage in extended gazing',
+        points: '500',
       },
     ],
     achieving: false,
@@ -320,6 +347,9 @@
       }
       return false;
     },
+    stopClose: function (e) {
+      e.stopPropagation();
+    },
     removeAchievements : function() {
       this.achieving = false;
       this.aBox.classList.remove('activate');
@@ -341,17 +371,24 @@
     makeScreen : function () {
       var self = this;
       var indexC = 0;
+      var activatedCount = 0;
+      var score = 0;
       this.all.forEach( function ( achievement ) {
         var activated = false;
         if (self.activated.indexOf(indexC) > -1) {
           activated = 'activated';
+          activatedCount++;
+          score += parseInt(self.details[indexC].points);
         }
         var div = document.createElement("div");
         div.className = "achs " + activated;
-        div.innerHTML = "<div class='title'>"+achievement+"</div><img src='/img/trophy"+ self.details[indexC].trophy +".svg'><div class='toAchieve'>" + self.details[indexC].toAchieve + "</div>";
+        div.onclick = function() { self.stopClose(event); };
+        div.innerHTML = "<div class='title'>"+achievement+"</div><div class='points'>" + self.details[indexC].points + "</div><div class='toAchieve'>" + self.details[indexC].toAchieve + "</div>";
         self.aList.appendChild(div);
         indexC++;
       } );
+      this.scoreBox.innerHTML = activatedCount + " <small>of</small> " + this.all.length;
+      this.scoreAch.innerHTML = score;
     },
     clearScreen : function () {
       while (this.aList.firstChild) {

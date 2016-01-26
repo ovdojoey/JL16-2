@@ -1,16 +1,15 @@
 {{> header }}
-  <section class="sidebar-fixed">
+  <section class="sidebar-fixed" onclick="window.JL.achievements.stopClose(event);">
     <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
     <div class="sidebar_content">
       <h4 class="resume-title">Curriculum vitae</h4>
       <h5 class="resume-highlights-title">Highlights</h5>
       <ul class="resume-highlights">
         <li>Fast, independent worker</li>
-        <li>Intensely passionate</li>
-        <li>A project finisher - no loose ends here</li>
-        <li>Knowledgable and eager to learn</li>
-        <li>Creative and design oriented</li>
-        <li>Very skilled with PHP, JavaScript, HTML5, Sass/CSS, and SQL</li>
+        <li>3 years lead web developer experience</li>
+        <li>A project finisher</li>
+        <li>Creative, passionate, and design oriented</li>
+        <li>Highly skilled in PHP, JavaScript, HTML5, Sass/CSS, and SQL</li>
       </ul>
 
       <a href="resume.pdf" target="_blank" class="btn btn-border" onclick="window.JL.achievements.activateAchievement('SAAVYRECRUITER')">Download CV</a>
@@ -32,7 +31,14 @@
       <h5 class="title">Choose your avatar</h5>
     </div> -->
     <div class="achievements">
-      <h2 class="achievements-title">Achievements</h2>
+      <h2 class="achievements-title">Achievements minigame</h2>
+      <div class="achievements-desc">Unlock achievements as you progress throughout the site.</div>
+      <div class="scores">
+        <div class="achievements-score">SCORE<span id="score-ach" class="score-ach">0</span></div>
+        <div class="achievements-score">UNLOCKED<span id="score-box" class="score-ach">0/10</span></div>
+      </div>
+
+
       <div class="achlist" id="achievements-list">
 
 

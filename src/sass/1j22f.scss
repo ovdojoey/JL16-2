@@ -25,7 +25,7 @@ body{
         height: 100%;
         width: 100%;
         overflow: auto;
-        animation: fadeIn 1.5s 1 forwards;
+        animation: fadeIn 1s 1 forwards;
         overflow-y: scroll; /* has to be scroll, not auto */
         -webkit-overflow-scrolling: touch;
       }
@@ -63,9 +63,9 @@ body{
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(#0d0f0b,0.95);
+      background: rgba(#0d0f0b,0.98);
       z-index: 1002;
-      animation: fadeIn 1s 1 forwards;
+      animation: fadeIn 400ms 1 forwards;
     }
     &.lock.cv{
       &:after{
@@ -291,7 +291,53 @@ body{
       text-transform: uppercase;
       font-weight: 400;
       font-size: 3.6rem;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      //
+      // font-size: 2rem;
       font-family: "Oswald", serif;
+    }
+    .achievements-subline, .achievements-desc{
+      font-size: 1.5rem;
+      margin: 0;
+      padding: 10px 12px;
+      display: block;
+      font-family: "Oswald", serif;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: teal;
+
+      &.achievements-desc{
+        color: #777;
+        font-size: 0.9rem;
+      }
+    }
+    .scores {
+      display: flex;
+      width: 100%;
+      align-content: center;
+      flex-wrap: nowrap;
+      max-width: 600px;
+      padding: 30px 0;
+      margin:auto;
+    }
+    .achievements-score{
+      font-family: "Oswald", serif;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: teal;
+      font-size: 0.9rem;
+      padding: 10px;
+      width: 50%;
+
+      .score-ach{
+        display: block;
+        font-family: "Oswald", serif;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: #fff;
+        font-size: 2.35rem;
+      }
     }
     .achlist{
       display: flex;
@@ -299,7 +345,7 @@ body{
       align-items: center;
       justify-content: center;
       width: 100%;
-      max-width: 800px;
+      max-width: 1200px;
       margin: auto;
 
       .achs{
@@ -308,19 +354,44 @@ body{
         min-width: 140px;
         width: 30%;
         border-radius: 10px;
-        background: rgba(16,16,16,0.96);
+        // background: rgba(16,16,16,0.96);
+        box-shadow: 0px 1px 2px rgba(2,2,2,0.5);
         padding: 20px;
         margin: 15px;
-        opacity: 0.25;
-        transition: opacity 300ms;
+        opacity: 0.5;
+        transition: opacity 300ms, border-color 300ms, transform 300ms;
         cursor: default;
         box-sizing: border-box;
+        border: 1px solid transparent;
+        position: relative;
 
-        &:hover,&:active,&:focus{
-          opacity: 0.6;
+
+        &:hover{
+          // transform: translateY(-6px);
+          border: 1px solid #fff;
         }
+
         &.activated{
+          background: #111;
+
           opacity: 1;
+          border: 1px solid darken(gold, 24%);
+          // &:before{
+          //   position: absolute;
+          //   display: block;
+          //   width: 30px;
+          //   height: 30px;
+          //   content: '★';
+          //   background: #222;
+          //   color: #fff;
+          //   top: 5px;
+          //   right:5px;
+          //   // // padding: 5px;
+          //   line-height: 30px;
+          //   text-align: center;
+          //   border-top-right-radius: 6px;
+          //   border-bottom-left-radius: 6px;
+          // }
         }
         .title{
           display: block;
@@ -328,6 +399,10 @@ body{
           font-family: "Oswald", serif;
           font-weight: 400;
           color: teal;
+        }
+        .points{
+          font-size: 2rem;
+          font-family: "Oswald", serif;
         }
         .toAchieve{
           font-size: 12px;
@@ -534,10 +609,14 @@ body{
     left: 0;
     &#keys{
       z-index: 0 !important;
+      pointer-events: none;
     }
     &.activate{
       opacity: 1 !important;
       z-index: 1 !important;
+      &#keys{
+        pointer-events: auto;
+      }
       #d, #dsharp, #e, #f, #fsharp, #g, #gsharp, #a, #asharp, #c, #csharp, #b{
 
         position: relative;
@@ -687,6 +766,8 @@ body{
     max-width: 100%;
     width: 300px;
     padding-left: 120px;
+    //
+    padding-left: 60px;
     top:0;
     transition: transform 400ms;
 
@@ -695,12 +776,11 @@ body{
       left: auto;
       text-align: right;
       width: 99%;
-
     }
 
     &.activate{
       transform: translateY(0);
-      background: #0d0f0b;
+      background: rgba(#0d0f0b,0.6);
     }
 
     .title{
@@ -761,8 +841,18 @@ body{
     height: 100px;
     width: 100px;
     border-radius: 100px;
-    position: relative;
     bottom: 20px;
+
+    //
+    height: 60px;
+    width: 60px;
+    bottom: auto;
+     top: 10px;
+    // background: #121;
+    background: transparent;
+    right: 5px;
+    //
+    position: relative;
     text-align: center;
     z-index: 1001;
     transition: background 300ms, transform 400ms, opacity 400ms;
@@ -770,13 +860,22 @@ body{
     opacity: 0.9;
 
     &:hover{
-      background: darken(#35d6c9, 10%);
+      // background: darken(#35d6c9, 10%);
+      // background: rgba(gold,0.06);
+      color: lighten(teal,10%);
       opacity: 1;
     }
 
     .avatar{
       position: relative;
       top: 15px;
+
+      //
+      top : 0px;
+      left: 5px;
+      font-size: 1.2rem;
+      transition: color 200ms;
+
       transform: scale(0) translateY(200px);
       opacity: 0;
       animation: popIn 1s 1 forwards;
