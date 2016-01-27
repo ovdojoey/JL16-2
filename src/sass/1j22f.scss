@@ -368,7 +368,7 @@ body{
 
         &:hover{
           // transform: translateY(-6px);
-          border: 1px solid #fff;
+          // border: 1px solid #fff;
         }
 
         &.activated{
@@ -399,6 +399,7 @@ body{
           font-family: "Oswald", serif;
           font-weight: 400;
           color: teal;
+          color: #24E0E0;
         }
         .points{
           font-size: 2rem;
@@ -570,7 +571,7 @@ body{
       border-radius: 200px;
       border-bottom-right-radius: 200px;
       z-index: 3;
-      border: 13px solid rgba(#212,1);
+      border: 13px solid rgba(#123,1);
 
       &:after{
           background: #222;
@@ -688,6 +689,7 @@ body{
     cursor: pointer;
     text-transform: uppercase;
     color: #fff;
+    text-decoration: none;
 
     &.active{
       transform: scale(1);
@@ -695,7 +697,7 @@ body{
 
     &:hover{
       &:before{
-        opacity: 0.2;
+        opacity: 0.3;
       }
     }
 
@@ -818,7 +820,7 @@ body{
         }
       }
       &.error .name{
-        color: #c92929;
+        // color: #c92929;
         font-size: 13px;
         animation: flashTeal 4s 2s 2;
 
@@ -828,7 +830,7 @@ body{
         animation: flashTeal 8s 400ms 1;
         @keyframes flashTeal {
           50% {
-            color: teal;
+            color: #24E0E0;
           }
         }
       }

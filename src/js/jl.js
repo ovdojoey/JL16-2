@@ -241,11 +241,11 @@
         points: '1250',
       },
       {
-        toAchieve: 'Play Mary Had A Little Lamb',
+        toAchieve: 'Play A Lamb Lullaby in A',
         points: '50',
       },
       {
-        toAchieve: 'Play Fur Elise',
+        toAchieve: 'Play Für Elise',
         points: '250',
       },
       {
