@@ -99,8 +99,10 @@
     }
 
     // add event listener for achievement
-    hover_picture.addEventListener("mousedown", checkFanicer, false);
-    hover_picture.addEventListener("mouseup", checkFanicerEnd, false);
+    if ( hover_picture ) {
+      hover_picture.addEventListener("mousedown", checkFanicer, false);
+      hover_picture.addEventListener("mouseup", checkFanicerEnd, false);
+    }
     /* END HOVER PICTURES */
 
 

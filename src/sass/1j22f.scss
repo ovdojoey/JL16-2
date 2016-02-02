@@ -8,6 +8,8 @@ body{
   min-height: 100vh;
   background: #0d0f0b;
   color: #fff;
+  max-width: 100%;
+
   &.lock{
     overflow: hidden;
 
@@ -155,9 +157,9 @@ body{
       background: #fff;
       color: #222;
     }
-    width: 30%;
+    width: 25%;
     max-width: 90%;
-    min-width: 320px;
+    min-width: 325px;
     right: 0;
     background: #efefec;
     color: #111;
@@ -165,7 +167,7 @@ body{
     transform: translateX(100%);
     transition: transform 400ms, height 0s 400ms, width 0s 400ms;
     .sidebar_content{
-      padding: 15px 25px;
+      padding: 15px 30px;
       max-width: 290px;
       margin:auto;
       opacity: 0;
@@ -186,7 +188,7 @@ body{
         color: #0d0f0b;
       }
       .resume-highlights{
-        color: #8e8e86;
+        color: #555;
         font-size: 17px;
         font-family: "Georgia", serif;
         list-style: none;
@@ -534,12 +536,11 @@ body{
 
     &.rearrange{
       text-align: center;
-      margin:auto;
       bottom: 20px;
 
       #key-tune-box{
         height: auto;
-        top: -275px;
+        top: -305px;
         opacity: 1;
       }
 
@@ -567,11 +568,11 @@ body{
       text-align: center;
       cursor: pointer;
       transition: opacity 600ms;
-      opacity: 0.65;
+      opacity: 0.5;
       border-radius: 200px;
       border-bottom-right-radius: 200px;
       z-index: 3;
-      border: 13px solid rgba(#123,1);
+      border: 13px solid rgba(#333,1);
 
       &:after{
           background: #222;
@@ -588,7 +589,7 @@ body{
       &:hover{
         opacity: 0.8;
         &+.content_img{
-          opacity: 0.5;
+          opacity: 0.55;
         }
       }
       &:focus,&:active{
@@ -602,7 +603,7 @@ body{
   }
   .content_img{
     max-width: 100%;
-    opacity: 0.1;
+    opacity: 0.35;
     transition: opacity 400ms;
     height: auto;
     z-index: 0;
@@ -663,6 +664,40 @@ body{
     }
   }
 
+  /* PORTFolio */
+  .portfolio-list{
+    text-align: right;
+    font-family: "Oswald", serif;
+    font-weight: 300;
+    color: #666;
+    font-size: 1.5rem;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+    text-transform: uppercase;;
+
+
+    a {
+      color: #777;
+      transition: color 300ms;
+      text-decoration: none;
+      &:hover{
+        color: #eee;
+      }
+    }
+    li {
+      padding: 5px 0;
+    }
+
+    @media (min-width: 600px) {
+      font-size: 2.2rem;
+      a {
+        color: #666;
+      }
+    }
+
+  }
+
 }
 
 .projects{
@@ -697,7 +732,7 @@ body{
 
     &:hover{
       &:before{
-        opacity: 0.3;
+        opacity: 0.4;
       }
     }
 
@@ -707,7 +742,7 @@ body{
       height: 100%;
       width: 100%;
       content: '';
-      opacity: 0.14;
+      opacity: 0.2;
       z-index: -1;
       transition: opacity 400ms;
     }
@@ -907,7 +942,10 @@ body{
 }
 
 h1.headline{
-    font-size: 6rem;
+    font-size: 5rem;
+    @media (min-width: 600px) {
+      font-size: 6rem;
+    }
 }
 .headline{
   text-align: center;
@@ -916,6 +954,14 @@ h1.headline{
   text-transform: uppercase;
   &.zoomOut{
     animation: zoomOut 2s 1 cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  }
+}
+.portfolio-headline.headline{
+  text-align: right;
+  margin-bottom:0;
+  small{
+    font-size: 2rem;
+    display: block;
   }
 }
 .subline{
