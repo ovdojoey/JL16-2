@@ -1,4 +1,4 @@
-(function() {
+var JL = (function() {
 
   var JL = {};
 
@@ -744,13 +744,12 @@
   // JL.avatars = avatars;
 
 
-  // add JL to the window
-  window.JL = JL;
-
-
-
   // start the app
   document.addEventListener("DOMContentLoaded", init);
 
+
+  // // add JL to the window
+  // window.JL = JL;
+  return JL;
 
 })();
