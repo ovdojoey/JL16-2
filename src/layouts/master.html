@@ -1,5 +1,5 @@
 {{> header }}
-  <section class="sidebar-fixed" onclick="window.JL.achievements.stopClose(event);">
+  <section class="sidebar-fixed cv" onclick="window.JL.achievements.stopClose(event);">
     <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
     <div class="sidebar_content">
       <h4 class="resume-title">Curriculum vitae</h4>
@@ -12,8 +12,58 @@
         <li>Highly skilled in PHP, JavaScript, HTML5, Sass/CSS, and SQL</li>
       </ul>
 
-      <a href="resume.pdf" target="_blank" class="btn btn-border" onclick="window.JL.achievements.activateAchievement('SAAVYRECRUITER')">Download CV</a>
+      <a href="/resume.pdf" target="_blank" class="btn btn-border" onclick="window.JL.achievements.activateAchievement('SAAVYRECRUITER')">Download CV</a>
 
+    </div>
+  </section>
+  <section class="sidebar-fixed portfolio">
+    <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
+    <div class="sidebar_content">
+      <a href="/portfolio/" class="projects-title">Portfolio</a>
+      <ul class="portfolio-list">
+        <a href="/portfolio/jl-v2/">
+          <li>JL v2</li>
+        </a>
+        <a href="/portfolio/frnkrok/">
+          <li>Frnkrok</li>
+        </a>
+        <a href="/portfolio/juiced/">
+          <li>Juiced</li>
+        </a>
+        <a href="/portfolio/pates-law/">
+          <li>Pates Law</li>
+        </a>
+        <a href="/portfolio/promo-only-uk/">
+          <li>Promo Only UK / Europe</li>
+        </a>
+        <a href="/portfolio/web-time-tracker/">
+          <li>Web Time Tracker</li>
+        </a>
+        <a href="/portfolio/timeline/">
+          <li>Timeline</li>
+        </a>
+        <a href="/portfolio/jl-v1/">
+          <li>JL v1</li>
+        </a>
+        <a href="/portfolio/welli/">
+          <li>Welli</li>
+        </a>
+        <a href="/portfolio/the-brick-story/">
+          <li>The Brick Story</li>
+        </a>
+        <a href="/portfolio/anne-marie-bowen/">
+          <li>Anne-Marie Bowen, Esq.</li>
+        </a>
+        <a href="/portfolio/promo-only/">
+          <li>Promo Only</li>
+        </a>
+        <a href="/portfolio/pom/">
+          <li>POM - Orders Management</li>
+        </a>
+        <a href="/portfolio/mobile-beat/">
+          <li>Mobile Beat</li>
+        </a>
+      </ul>
     </div>
   </section>
   <section class="achievements-fixed">
@@ -47,7 +97,7 @@
     </div>
   </section>
   <section class="body">
-    <div class="body_container">
+    <div class="body_container" id="animation_body_container">
 
       {{{contents}}}
 

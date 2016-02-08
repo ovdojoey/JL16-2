@@ -5,7 +5,7 @@ var JL = (function() {
   function init () {
 
     var start = null;
-    var element = document.getElementById("main-header");
+    // var element = document.getElementById("main-header");
     var scrollPosition = window.scrollY;
     var halfWindowHeight = window.innerHeight / 2;
     var rAFstarted = false;
@@ -13,6 +13,10 @@ var JL = (function() {
     var scrollnimates = [].slice.call(document.getElementsByClassName('scrollnimate'));
 
     var scrollSet = [];
+
+    var scrollPointLast = null;
+    var direction = null;
+    var headlingLinks = document.getElementById("heading-links-fixed");
 
     // check if storage is supported
     localStore.loadLocalSettings();
@@ -43,6 +47,19 @@ var JL = (function() {
       var progress = timestamp - start;
       var scrollPoint = window.scrollY;
 
+      if ( scrollPointLast && scrollPointLast <= scrollPoint && headlingLinks ) {
+        // up
+        if ( direction === 1) {
+          headlingLinks.classList.add("scroll");
+        } else if ( scrollPoint !== scrollPointLast ) {
+          direction = 1;
+        }
+      } else if ( headlingLinks ) {
+        headlingLinks.classList.remove("scroll");
+        direction = 0;
+      }
+
+
 
 
       scrollnimates.forEach( function ( sn ) {
@@ -60,7 +77,7 @@ var JL = (function() {
 
       } );
 
-
+      scrollPointLast = scrollPoint;
       window.requestAnimationFrame(step);
 
     }
@@ -76,6 +93,10 @@ var JL = (function() {
       if ( location === '#/cv' ) {
         document.body.classList.add("lock");
         document.body.classList.add("cv");
+      }
+      if ( location === '#/all' ) {
+        document.body.classList.add("lock");
+        document.body.classList.add("all");
       }
       console.log(location);
     }
@@ -106,6 +127,31 @@ var JL = (function() {
     /* END HOVER PICTURES */
 
 
+    var animation = false,
+        animationstring = 'animation',
+        keyframeprefix = '',
+        domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+        pfx  = '',
+        elm = document.createElement('div');
+
+    if( elm.style.animationName !== undefined ) { animation = true; }
+
+    if( animation === false ) {
+      for( var i = 0; i < domPrefixes.length; i++ ) {
+        if( elm.style[ domPrefixes[i] + 'AnimationName' ] !== undefined ) {
+          pfx = domPrefixes[ i ];
+          animationstring = pfx + 'Animation';
+          keyframeprefix = '-' + pfx.toLowerCase() + '-';
+          animation = true;
+          break;
+        }
+      }
+    }
+
+    if ( animation === false ) {
+      document.getElementById("animation_body_container").style.opacity = "1";
+    }
+
   }
 
   var errorBag = {
@@ -122,7 +168,7 @@ var JL = (function() {
       // remove achievement
       setTimeout(function() {
         self.errorBox.classList.remove('activate');
-      }, 18000);
+      }, 1800);
 
     }
   };
@@ -364,6 +410,7 @@ var JL = (function() {
     removeScreen : function () {
       document.body.classList.remove("lock");
       document.body.classList.remove("cv");
+      document.body.classList.remove("all");
       document.body.classList.remove("achievements");
       window.location.hash = "#/";
     },
