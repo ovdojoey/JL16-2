@@ -10,6 +10,13 @@ body{
   color: #fff;
   max-width: 100%;
 
+  &.frnkrok{
+    background: #1d0720;
+  }
+  &.juiced{
+    background: #c66c1c;
+  }
+
   &.lock{
     overflow: hidden;
 
@@ -195,13 +202,19 @@ body{
       background: #050505;
       color: #fff;
       display: flex;
-      align-content: center;
+      // align-content: center;
+      .shift-down{
+        height: 75px;
+        width: 100%;
+        display: block;
+      }
+
       .exit{
         background: #111;
         color: #eee;
       }
       .projects-title{
-        color: #eee;
+        color: #ddd;
         text-align: left;
         font-weight: 400;
         font-size: 20px;
@@ -210,6 +223,12 @@ body{
         padding: 0 0 20px 0;
         display: block;
         text-transform: uppercase;
+        &:last-of-type{
+          padding-top: 20px;
+        }
+        &:hover{
+          color: #fff;
+        }
       }
       .portfolio-list{
         margin: 0;
@@ -563,7 +582,7 @@ body{
     text-transform: uppercase;
     font-family: "Oswald", serif;
     display: inline-block;
-    padding: 5px 20px 5px 5px;
+    padding: 5px 10px 5px 5px;
     vertical-align: middle;
     position: relative;
     background: #0d0f0b;
@@ -583,7 +602,7 @@ body{
 
     &:not(:first-of-type){
       &:before{
-        padding: 0 5px;
+        padding: 0;
         content: ">";
         color: #444;
         display: inline-block;
@@ -605,6 +624,9 @@ body{
   &.portfolio{
     margin-top: -20px; // not needed if fixed
     height: auto;
+  }
+  &.section-group-no-min{
+    min-height: 0;
   }
   &.pictures{
     // overflow: hidden;
@@ -648,6 +670,13 @@ body{
       }
       &.big{
         max-width: 100vw;
+      }
+      &.rotary-up{
+        position:absolute;
+        top: 0;
+        @media (min-width: 600px) {
+          top: -40vh;
+        }
       }
     }
 
@@ -1173,8 +1202,15 @@ body{
     clear: both;
     text-align: right;
     padding: 10px 0;
+
+
     div{
-      padding: 10px 0;
+      margin-top: 30px;
+      padding: 10px 0 10px 0;
+      background: rgba(#0d0f0b, 0.5);
+      @media (min-width: 600px) {
+        background: transparent;
+      }
     }
     .form-input{
       display: inline-block;
@@ -1192,20 +1228,43 @@ body{
     }
   }
 }
-.footer-nav{
+.footer-nav, .header-nav{
   margin-top: 50px;
   padding: 20px 0;
   text-align: center;
   width: 100%;
+  z-index: 2;
+  position: relative;
+  &.header-nav{
+    margin-top: 20px;
+    font-family: Times, serif;
+    letter-spacing: 1.4px;
+    // position: absolute;
+    // top: 0;
+    &.position-absolute{
+      position: absolute;
+      left: 0;
+
+    }
+  }
   a{
     display: inline-block;
-    padding: 0 14px;
+    // padding: 0 14px;
+    padding: 4px;
+    margin: 0 10px;
     color: #ddd;
     text-decoration: none;
     font-family: "Oswald", serif;
     font-size: 15px;
     color: #888;
     font-weight: 400;
+    &.active{
+      border: 1px solid #eee;
+      color: #eee;
+    }
+    &:hover{
+      color: #eee;
+    }
   }
 }
 .footer {
@@ -1214,6 +1273,8 @@ body{
   padding: 20px 0;
   text-align: center;
   margin-bottom: 50px;
+  z-index: 2;
+  position: relative;
 }
 
 h1.headline{
@@ -1293,6 +1354,183 @@ h1.headline{
     margin: 0;
     &+.btn-block-half{
       border-left: 0;
+    }
+  }
+  &.submit-btn{
+    background: transparent;
+    font-size: 1.1rem;
+    outline: 0;
+    margin: 40px 0 0 0;
+  }
+}
+.frm-robot{
+  position: relative;
+}
+#robot{
+  position: absolute;
+  height: 80vh;
+  left: -20%;
+  top: -150px;
+  .st0{fill:#EEAA2F;}
+  .st1{fill:#ED3E00;}
+  .st2{fill:#42A89B;}
+  .st3{fill:#FFFFFF;}
+
+  &.chilling{
+    #XMLID_3694_{
+      // left arm
+      animation: sway 25s infinite ease-in-out;
+    }
+    #XMLID_3700_{
+      //right arm
+      animation: sway 25s infinite backwards ease-in-out;
+      transform-origin: 10% 0%;
+
+    }
+    #XMLID_3733_{
+      //body
+      animation: bounce 25s infinite ease-in-out;
+
+    }
+    #XMLID_3710_{
+      //right eye
+      animation: close 10s infinite ease-in-out;
+    }
+    #XMLID_3709_{
+      // eye ball
+      animation: closeEye 10s infinite ease-in-out;
+
+    }
+    #XMLID_3693_{
+      // lightenting
+      animation: rumble 20s infinite linear, flash 8s infinite ease-in-out;
+      transform-origin: 50% 50%;
+
+    }
+    #XMLID_3717_{
+      //blades on head
+      transform-origin: 50% 50%;
+      // animation: spin 20s infinite linear;
+    }
+  }
+
+
+  &.working{
+    #XMLID_3729_{
+      animation: working 1s infinite alternate;
+    }
+
+    #XMLID_3725_{
+      animation: pulse 3.33s infinite  linear;
+    }
+    #XMLID_3724_{
+      animation: pulse 3.33s 333ms infinite  linear;
+    }
+    #XMLID_3723_{
+      animation: pulse 3.33s 666ms infinite  linear;
+    }
+    #XMLID_3722_{
+      animation: pulse 3.33s 999ms infinite  linear;
+    }
+    #XMLID_3721_{
+      animation: pulse 3.33s 1.3s infinite  linear;
+    }
+    #XMLID_3720_{
+      animation: pulse 3.33s 1.66s infinite  linear;
+    }
+    #XMLID_3719_{
+      animation: pulse 3.33s 1.998s infinite  linear;
+    }
+    #XMLID_3718_{
+      animation: pulse 3.33s 2.331s infinite  linear;
+    }
+    #XMLID_3726_{
+      animation: pulse 3.33s 2.62s infinite  linear;
+    }
+  }
+  @keyframes working {
+    100% {
+      fill: blue;
+    }
+  }
+  @keyframes pulse {
+    50% {
+        opacity: 0
+    }
+  }
+  @keyframes bounce {
+    50% {
+      transform: translateY(30px);
+    }
+  }
+  @keyframes close {
+    46%{
+      r: 39;
+    }
+    50% {
+      r: 10;
+    }
+    55%{
+      r: 39;
+    }
+  }
+  @keyframes closeEye {
+    46%{
+      r: 21;
+    }
+    50% {
+      r: 0;
+    }
+    55%{
+      r: 21;
+    }
+  }
+  @keyframes flash{
+    48%{
+      fill: #fff;
+    }
+    50% {
+      fill: gold;
+    }
+    52%{
+     fill: #fff;
+    }
+    83%{
+      fill: #fff;
+    }
+    85%{
+      fill: gold;
+    }
+    87%{
+      fill: #fff;
+    }
+  }
+  @keyframes rumble {
+    16%{
+      transform: rotate(1deg) translate(1px, 0px);
+    }
+    30%{
+      transform: rotate(-2deg) translate(-1px, 1px);
+    }
+    50% {
+      transform: rotate(2deg) translate(1px, 0px);
+
+    }
+    65%{
+      transform: rotate(-2deg) translate(0px, -1px);
+    }
+  }
+  @keyframes sway{
+    25%{
+      transform: rotate(2deg);
+    }
+    60%{
+      transform: rotate(-2deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

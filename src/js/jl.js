@@ -54,7 +54,7 @@ var JL = (function() {
         } else if ( scrollPoint !== scrollPointLast ) {
           direction = 1;
         }
-      } else if ( headlingLinks ) {
+      } else if ( headlingLinks && scrollPointLast ) {
         headlingLinks.classList.remove("scroll");
         direction = 0;
       }
