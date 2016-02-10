@@ -17,10 +17,10 @@ layout: master.html
   <div class="content">
     <div class="content_text">
       <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">Contact</h1>
-      <p class="tagline  thin scrollnimate" data-magic-number="-5" >
-        Feel free to give me a buzz via email at JOEY.L@W3BY.COM.
+      <p class="tagline  thin scrollnimate" data-magic-number="-8" >
+        Give me a buzz via email at JOEY.L@W3BY.COM.
         <br><small><br>- or -<br></small><br>
-        fill out the form below and I will have FRM send it for you.
+        See førm below.
        </p>
     </div>
    </div>
@@ -28,7 +28,7 @@ layout: master.html
 <div class="section-group">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">Meet FRM,<small>He will be helping us today</small></h1>
+      <h1 id="headlineRobot" class="headline scrollnimate portfolio-headline" data-magic-number="-8">Meet FøRM,<small>He will be helping us today</small></h1>
       <div class="frm-robot scrollnimate" data-magic-number="-3.5">
         <?xml version="1.0" encoding="utf-8"?>
         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -193,23 +193,27 @@ layout: master.html
         </g>
         </svg>
       </div>
-      <form class="contact-form scrollnimate">
+      <form class="contact-form scrollnimate" action="/contact/send/" method="POST" onsubmit="JL.robot.sendForm(event)" id="contact-form-box">
         <label><div>Your Name, good Person</div>
-          <input type="name" id="contact_name" name="name" class="form-input" placeholder="Name">
+          <input type="name" id="contact_name" name="name" class="form-input" onfocus="JL.robot.cancelSending(event)" tabindex="1" onchange="JL.robot.changeName(event)" placeholder="Name">
         </label>
         <label><div>Your Email? Surely you have one?</div>
-          <input type="email" id="contact_email" name="email" class="form-input" placeholder="Email">
+          <input type="email" id="contact_email" name="email" class="form-input" onfocus="JL.robot.cancelSending(event)" tabindex="2"  onchange="JL.robot.changeEmail(event)" placeholder="Email">
         </label>
         <label><div>Your Message? I will pass it along faithfully</div>
-          <textarea id="contact_message" name="message" class="form-input" placeholder="Your message"></textarea>
+          <textarea id="contact_message" name="message" class="form-input" onfocus="JL.robot.cancelSending(event)" tabindex="3" placeholder="Message"></textarea>
         </label>
         <div>
-          <button type="submit" class="btn btn-border submit-btn">Send</button>
+          <a class="btn btn-border cancel-btn" id="cancel-button" onclick="JL.robot.cancelSending(event)" tabindex="5">Cancel</a>
+          <button type="submit" class="btn btn-border submit-btn" tabindex="4">Send</button>
         </div>
       </form>
+      <div class="message-success" id="message-success">
+        <h4>Thanks for the message!</h4>
+        <p>I will get back with you as soon as possible</p>
     </div>
   </div>
 </div>
-<div class="section-group pictures section-group-no-min">
+<!-- <div class="section-group pictures section-group-no-min">
   <img src="/img/rotary_drawing.png" class="stagger-left rotary-up">
-</div>
+</div> -->

@@ -5,6 +5,7 @@ var JL = (function() {
   function init () {
 
     var start = null;
+
     // var element = document.getElementById("main-header");
     var scrollPosition = window.scrollY;
     var halfWindowHeight = window.innerHeight / 2;
@@ -44,6 +45,7 @@ var JL = (function() {
 
 
       if (!start) start = timestamp;
+      // full progress indicator
       var progress = timestamp - start;
       var scrollPoint = window.scrollY;
 
@@ -57,6 +59,21 @@ var JL = (function() {
       } else if ( headlingLinks && scrollPointLast ) {
         headlingLinks.classList.remove("scroll");
         direction = 0;
+      }
+
+      if ( JL.robot.sendingCountdown ) {
+        if ( !JL.robot.sendingMailTimer ) JL.robot.sendingMailTimer = document.getElementById("seconds-to-send");
+        if ( !JL.robot.sendStart ) JL.robot.sendStart = timestamp;
+        var countdownProgress = timestamp - JL.robot.sendStart;
+        var timeLeft = Math.round(Math.floor(JL.robot.sendingCountdown - countdownProgress) / 1000);
+        JL.robot.sendingMailTimer.innerText = timeLeft;
+        if ( countdownProgress >= JL.robot.sendingCountdown ) {
+          JL.robot.sendingCountdown = null;
+          JL.robot.sendStart = null;
+          JL.robot.sendingMailTimer = null;
+          JL.robot.sendMail();
+
+        }
       }
 
 
@@ -243,6 +260,159 @@ var JL = (function() {
   //
   // };
 
+  JL.robot = {
+    headline: document.getElementById("headlineRobot"),
+    robot: document.getElementById("robot"),
+    sending: false,
+    sendingCountdown: null,
+    sendStart: null,
+    sendingMailTimer: null,
+    emailInput : document.getElementById("contact_email"),
+    nameInput : document.getElementById("contact_name"),
+    messageInput : document.getElementById("contact_message"),
+    changeName: function (e) {
+      this.headline.innerHTML = "Spectacular!<small>Thanks, " + e.target.value +"! &nbsp; ONWARDS!</small>";
+      this.robot.classList.add("excited");
+    },
+    changeEmail: function (e) {
+      var robot = this.robot;
+      var headline = this.headline;
+      headline.innerHTML = "FANTASMIC!<small>THIS IS SO EXCITING!</small>";
+      robot.classList.remove("chilling");
+      robot.classList.remove("excited");
+      function dopeRobot () {
+        robot.classList.add("doped");
+      }
+      function reverseDopeRobot () {
+
+        robot.classList.remove("doped");
+        robot.classList.add("comeDown");
+        setTimeout(function(){
+          robot.classList.add("chilling");
+          robot.classList.add("excited");
+        }, 600);
+        if ( !JL.robot.sending && JL.robot.sendingCountdown === null ) {
+          headline.innerHTML = "Back To it,<small>You were saying?</small>";
+        }
+      }
+      setTimeout(function(){
+        dopeRobot();
+      }, 35);
+
+      setTimeout(function(){
+        reverseDopeRobot();
+      }, 3940);
+    },
+    sendForm: function (e) {
+
+      e.preventDefault();
+
+      if ( this.sending ) {
+        return false;
+      }
+
+      function validateEmail(email) {
+          var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      }
+
+      // var email = document.getElementById("contact_email");
+      // var name = document.getElementById("contact_name");
+      // var message = document.getElementById("contact_message");
+      var errors = 0;
+
+      if ( !this.emailInput.value || !validateEmail(this.emailInput.value) ) {
+        this.errorWithForm('email', this.emailInput);
+        errors++;
+      } else {
+        this.successWithForm(this.emailInput);
+      }
+
+      if ( !this.nameInput.value ) {
+        this.errorWithForm('name', this.nameInput);
+        errors++;
+      } else {
+        this.successWithForm(this.nameInput);
+      }
+
+      if ( !this.messageInput.value || !this.messageInput.value.trim() ) {
+        this.errorWithForm('message', this.messageInput);
+        errors++;
+      } else {
+        this.successWithForm(this.messageInput);
+      }
+
+      if ( errors === 0 ) {
+        this.prepareSending(this.emailInput, this.nameInput, this.messageInput);
+      }
+
+    },
+    errorWithForm : function (error, object) {
+      object.classList.add("error");
+      this.headline.innerHTML = "Oh my! <small>Correct the errors below</small>";
+    },
+    successWithForm: function (object) {
+      object.classList.remove("error");
+    },
+    prepareSending: function (email, name, message) {
+      if ( this.sending ) {
+        return false;
+      }
+      this.robot.classList.add("working");
+      this.headline.innerHTML = "READY!<small>Give it <span id='seconds-to-send'>10</span> and it's off!";
+      email.classList.add("prepareSending");
+      name.classList.add("prepareSending");
+      message.classList.add("prepareSending");
+      document.getElementById("cancel-button").classList.add("show");
+      this.sending = true;
+      this.sendingCountdown = 10000;
+    },
+    cancelSending: function (e) {
+
+      this.robot.classList.remove("working");
+      if ( this.sending ) {
+        this.headline.innerHTML = "CANCELLED<small>Whew, just in time too!";
+      }
+
+      this.emailInput.classList.remove("prepareSending");
+      this.nameInput.classList.remove("prepareSending");
+      this.messageInput.classList.remove("prepareSending");
+      document.getElementById("cancel-button").classList.remove("show");
+      this.sending = false;
+      this.sendingCountdown = null;
+      this.sendStart = null;
+      this.sendingMailTimer = null;
+
+    },
+    sendMail: function () {
+      this.headline.innerHTML = "SENT<small>You did it!";
+      document.getElementById('contact-form-box').style.display = "none";
+      document.getElementById('message-success').classList.add("show");
+      this.robot.classList.remove("working");
+
+      var name = this.nameInput.value;
+      var email = this.emailInput.value;
+      var message = this.messageInput.value;
+
+      var formData = new FormData();
+
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("message", message);
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+          console.log(xhttp);
+        }
+      };
+
+      xhttp.open("POST", "/contact/send/");
+      xhttp.send(formData);
+
+    }
+
+  };
 
   var achievements = {
     aBox: document.getElementById('achievement-box'),
