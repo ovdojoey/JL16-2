@@ -237,6 +237,7 @@ body{
         li {
           padding: 0;
           margin: 0;
+          font-weight: 400;
         }
         a{
           display: block;
@@ -619,7 +620,55 @@ body{
   flex-wrap: wrap;
   align-items: center;
   height: 100vh;
-  min-height: 740px;
+  min-height: 640px;
+
+  .project-screenshots{
+    clear: both;
+    text-align: center;
+    // padding-top: 45px;
+    // background: #141414;
+    @media(min-width: 600px){
+      text-align: right;
+    }
+    .thumb {
+      display: inline-block;
+      margin: -10px 0;
+      @media(min-width: 600px) {
+        margin: auto -25px;
+      }
+    }
+    .thumb img{
+      box-shadow: 0px 2px 3px rgba(0,0,0,0.65);
+      // border: 3px solid transparent;
+      box-sizing: border-box;
+      position: relative;
+      max-width: 180px;
+      transition: transform 425ms cubic-bezier(0.175, 0.885, 0.32, 1.225);
+      transform:  translateX(0) scale(0.5);
+      transform-origin: 50% 50%;
+      z-index: 1;
+      &:hover{
+        transform: translateX(0) scale(1);
+        z-index: 2;
+      }
+      &:focus,&:active{
+        // border-color: #fff;
+        transform: translateX(0) scale(2);
+        z-index: 2;
+      }
+      @media (min-width: 600px) {
+        transform:  translateX(50%) scale(0.5);
+        transform-origin: -25% 50%;
+        &:hover{
+          transform: translateX(12.5%) scale(1);
+        }
+        &:focus,&:active{
+          transform: translateX(-125%) scale(2.5);
+          cursor: none;
+        }
+      }
+    }
+  }
 
   &.portfolio{
     margin-top: -20px; // not needed if fixed
@@ -685,6 +734,8 @@ body{
   .content{
     width: 100%;
   }
+
+
 
   .content_text{
     z-index: 1;
@@ -1205,10 +1256,14 @@ body{
 .contact-form{
   clear: both;
   text-align: right;
-  margin-top: 60px;
+  // margin-top: 60px;
 
   padding-top: 10px;
-  position: relative;;
+  position: relative;
+
+  @media (min-width: 600px) {
+    margin-top: 60px;
+  }
 
   &:before{
     width: 100px;
@@ -1430,31 +1485,44 @@ h1.headline{
   position: absolute;
   height: 80vh;
   left: -20%;
-  top: -150px;
+  top: -200px;
+  z-index: -1;
   .st0{fill:#EEAA2F;}
   .st1{fill:#ED3E00;}
   .st2{fill:#42A89B;}
   .st3{fill:#FFFFFF;}
 
+  #XMLID_3700_{
+    transition: transform 400ms;
+    transform-origin: 0% 5%;
+  }
+
   &.comeDown{
-    animation: comeDown 600ms 1 ease-in forwards;
+    #XMLID_3707_{
+      transform-origin: 50%;
+      transition: transform 1s;
+      transform: scale(1);
+    }
   }
 
   &.chilling{
     animation: swayUp 6s infinite ease-in-out;
-
+    #XMLID_3729_{
+      // top red ball
+      animation: antennaPulse 3s infinite  linear;
+    }
     #XMLID_3694_{
       // left arm
       animation: sway 25s infinite ease-in-out;
     }
     #XMLID_3700_{
       //right arm
-      animation: sway 25s infinite  ease-in-out;
+      // animation: sway 25s infinite  ease-in-out;
       transform-origin: 10% 0%;
     }
     #XMLID_3733_{
       //body
-      animation: bounce 25s infinite ease-in-out;
+      // animation: bounce 25s infinite ease-in-out;
     }
     #XMLID_3710_{
       //right eye// animation: close 10s infinite ease-in-out;
@@ -1470,7 +1538,7 @@ h1.headline{
     #XMLID_3717_{
       //blades on head
       transform-origin: 50% 50%;
-      // animation: spin 20s infinite linear;
+      // animation: spin 1s 1 linear;
     }
   }
   &.excited{
@@ -1485,7 +1553,7 @@ h1.headline{
       animation: pinkPulse 1s infinite  linear;
     }
     #XMLID_3710_,#XMLID_3713_{
-      r: 60;
+      r: 40;
     }
     #XMLID_3717_{
       //blades on head
@@ -1495,18 +1563,37 @@ h1.headline{
   }
 
   &.doped {
-    transition: transform 400ms;
-    transform: rotate(180deg);
-    animation: swayUpBackwards 300ms 600ms infinite ease-in-out reverse;
+    transition: transform 400ms 400ms;
+    // transform: rotate(180deg);
+    animation: swayUp 300ms 600ms infinite ease-in-out reverse;
+    #XMLID_3707_{
+      // mouth
+      transform-origin: 50%;
+      transition: transform 1s;
+      transform: scale(2);
+    }
     #XMLID_3717_{
       //blades on head
       transform-origin: 50% 50%;
-      animation: spin 20s infinite linear;
+      // animation: spin 20s infinite linear;
     }
-
+    #XMLID_3700_{//r arm
+      transform: rotateX(180deg);
+      transform-origin: 0% 5%;
+      transition-duration: 400ms;
+    }
   }
-
+  &.frown{
+    #XMLID_3707_{
+      // mouth
+      transform-origin: 50%;
+      transition: transform 1s;
+      transform: rotateX(180deg) scale(1.5);
+    }
+  }
   &.working{
+    animation: rightRound 3s 5 ease-in;
+
     #XMLID_3729_{
       animation: working 1s infinite alternate;
     }
@@ -1552,6 +1639,17 @@ h1.headline{
       fill: pink;
     }
   }
+  @keyframes antennaPulse{
+    40% {
+      fill: #ED3E00;
+    }
+    50%{
+      fill: blue;
+    }
+    60% {
+      fill: #ED3E00;
+    }
+  }
   @keyframes swayUp {
     20% {
       transform: translate(1px, -5px) rotate(0.2deg);
@@ -1570,9 +1668,21 @@ h1.headline{
     }
 
   }
+  @keyframes rightRound {
+    40%{
+      transform: rotateY(-10deg) translateY(10px);
+    }
+    50%{
+      transform-origin: 50%;
+      transform: rotateY(0deg);
+    }
+    60%{
+      transform: rotateY(10deg) translateY(-5px);
+    }
+  }
   @keyframes working {
     100% {
-      fill: blue;
+      fill: black;
     }
   }
   @keyframes pulse {

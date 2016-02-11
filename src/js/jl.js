@@ -111,9 +111,15 @@ var JL = (function() {
         document.body.classList.add("lock");
         document.body.classList.add("cv");
       }
-      if ( location === '#/all' ) {
+      else if ( location === '#/all' ) {
         document.body.classList.add("lock");
         document.body.classList.add("all");
+      }
+      else {
+        document.body.classList.remove("lock");
+        document.body.classList.remove("cv");
+        document.body.classList.remove("all");
+        document.body.classList.remove("achievements");
       }
       console.log(location);
     }
@@ -270,11 +276,15 @@ var JL = (function() {
     emailInput : document.getElementById("contact_email"),
     nameInput : document.getElementById("contact_name"),
     messageInput : document.getElementById("contact_message"),
+    robotDoped : false,
     changeName: function (e) {
+      achievements.activateAchievement("ROBOTRELATIONS");
+
       this.headline.innerHTML = "Spectacular!<small>Thanks, " + e.target.value +"! &nbsp; ONWARDS!</small>";
       this.robot.classList.add("excited");
     },
     changeEmail: function (e) {
+      achievements.activateAchievement("ROBOTRELATIONS");
       var robot = this.robot;
       var headline = this.headline;
       headline.innerHTML = "FANTASMIC!<small>THIS IS SO EXCITING!</small>";
@@ -295,13 +305,19 @@ var JL = (function() {
           headline.innerHTML = "Back To it,<small>You were saying?</small>";
         }
       }
-      setTimeout(function(){
-        dopeRobot();
-      }, 35);
+
+      if ( !this.robotDoped ) {
+        this.robotDoped = true;
+        setTimeout(function(){
+          dopeRobot();
+        }, 35);
+      }
 
       setTimeout(function(){
         reverseDopeRobot();
       }, 3940);
+
+
     },
     sendForm: function (e) {
 
@@ -324,26 +340,38 @@ var JL = (function() {
       if ( !this.emailInput.value || !validateEmail(this.emailInput.value) ) {
         this.errorWithForm('email', this.emailInput);
         errors++;
+        this.robot.classList.add("frown");
+
       } else {
         this.successWithForm(this.emailInput);
+        this.robot.classList.remove("frown");
       }
 
       if ( !this.nameInput.value ) {
         this.errorWithForm('name', this.nameInput);
+        this.robot.classList.add("frown");
+
         errors++;
       } else {
         this.successWithForm(this.nameInput);
+        this.robot.classList.remove("frown");
+
       }
 
       if ( !this.messageInput.value || !this.messageInput.value.trim() ) {
         this.errorWithForm('message', this.messageInput);
+        this.robot.classList.add("frown");
+
         errors++;
       } else {
         this.successWithForm(this.messageInput);
+        this.robot.classList.remove("frown");
+
       }
 
       if ( errors === 0 ) {
         this.prepareSending(this.emailInput, this.nameInput, this.messageInput);
+        this.robot.classList.remove("frown");
       }
 
     },
@@ -365,7 +393,7 @@ var JL = (function() {
       message.classList.add("prepareSending");
       document.getElementById("cancel-button").classList.add("show");
       this.sending = true;
-      this.sendingCountdown = 10000;
+      this.sendingCountdown = 8000;
     },
     cancelSending: function (e) {
 
@@ -389,6 +417,22 @@ var JL = (function() {
       document.getElementById('contact-form-box').style.display = "none";
       document.getElementById('message-success').classList.add("show");
       this.robot.classList.remove("working");
+      this.robot.classList.remove("excited");
+      this.robot.classList.remove("chilling");
+      function dopeRobot() {
+        this.robot.classList.add("doped");
+      }
+      function removeDoped () {
+        this.robot.classList.remove("doped");
+        this.robot.classList.add("chilling");
+        this.robot.classList.add("excited");
+      }
+      setTimeout(function(){
+        dopeRobot();
+      }, 35);
+      setTimeout(function(){
+        removeDoped();
+      }, 5500);
 
       var name = this.nameInput.value;
       var email = this.emailInput.value;
@@ -436,6 +480,7 @@ var JL = (function() {
       'USETHESOURCE',
       'HUNTRESS',
       'FANCIER',
+      'ROBOTRELATIONS',
     ],
     details: [
       {
@@ -493,6 +538,10 @@ var JL = (function() {
       {
         toAchieve: 'Engage in extended gazing',
         points: '500',
+      },
+      {
+        toAchieve: 'Meet FØRM',
+        points: '200',
       },
     ],
     achieving: false,
@@ -582,7 +631,9 @@ var JL = (function() {
       document.body.classList.remove("cv");
       document.body.classList.remove("all");
       document.body.classList.remove("achievements");
-      window.location.hash = "#/";
+      var stateObj = { };
+      history.replaceState(stateObj, "Joey Lea", "");
+      // window.location.hash = "#/";
     },
     toggleScreen : function () {
       document.body.classList.toggle("lock");
