@@ -1356,9 +1356,11 @@ body{
     // position: absolute;
     // top: 0;
     &.position-absolute{
-      position: absolute;
-      left: 0;
 
+      @media( min-width: 600px ) {
+        position: absolute;
+        left: 0;
+      }
     }
   }
   a{
