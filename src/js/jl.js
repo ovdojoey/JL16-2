@@ -180,6 +180,10 @@ var JL = (function() {
     display: function (error, name) {
       var self = this;
 
+      if ( window.location.pathname !== '/' ) {
+        return false;
+      }
+
       // activate achievement
       setTimeout(function() {
         self.errorBox.classList.add('activate');
@@ -189,7 +193,7 @@ var JL = (function() {
       // remove achievement
       setTimeout(function() {
         self.errorBox.classList.remove('activate');
-      }, 1800);
+      }, 3800);
 
     }
   };
