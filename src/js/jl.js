@@ -193,7 +193,7 @@ var JL = (function() {
       // remove achievement
       setTimeout(function() {
         self.errorBox.classList.remove('activate');
-      }, 3800);
+      }, 4800);
 
     }
   };
