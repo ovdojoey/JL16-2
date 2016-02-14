@@ -49,7 +49,8 @@ var JL = (function() {
       var progress = timestamp - start;
       var scrollPoint = window.scrollY;
 
-      if ( scrollPointLast && scrollPointLast <= scrollPoint && headlingLinks ) {
+      // negative scroll is caused by Safari bounce.  Disallow that.
+      if ( scrollPointLast && scrollPointLast <= scrollPoint && headlingLinks && scrollPoint > 0 ) {
         // up
         if ( direction === 1) {
           headlingLinks.classList.add("scroll");
@@ -75,9 +76,6 @@ var JL = (function() {
 
         }
       }
-
-
-
 
       scrollnimates.forEach( function ( sn ) {
         //sn.animationOffsets == main.he
@@ -125,29 +123,29 @@ var JL = (function() {
     }
 
 
-    /* HOVER PICTURES */
-    var lastKeyUpAt = 0;
-    var hover_picture = document.getElementById("hover-picture");
-
-    function checkFanicer () {
-       var keyDownAt = new Date();
-       setTimeout(function() {
-           if (keyDownAt > lastKeyUpAt)
-               achievements.activateAchievement("FANCIER");
-
-       }, 10000);
-    }
-
-    function checkFanicerEnd () {
-       lastKeyUpAt = new Date();
-    }
-
-    // add event listener for achievement
-    if ( hover_picture ) {
-      hover_picture.addEventListener("mousedown", checkFanicer, false);
-      hover_picture.addEventListener("mouseup", checkFanicerEnd, false);
-    }
-    /* END HOVER PICTURES */
+    // /* HOVER PICTURES */
+    // var lastKeyUpAt = 0;
+    // var hover_picture = document.getElementById("hover-picture");
+    //
+    // function checkFanicer () {
+    //    var keyDownAt = new Date();
+    //    setTimeout(function() {
+    //        if (keyDownAt > lastKeyUpAt)
+    //            achievements.activateAchievement("FANCIER");
+    //
+    //    }, 10000);
+    // }
+    //
+    // function checkFanicerEnd () {
+    //    lastKeyUpAt = new Date();
+    // }
+    //
+    // // add event listener for achievement
+    // if ( hover_picture ) {
+    //   hover_picture.addEventListener("mousedown", checkFanicer, false);
+    //   hover_picture.addEventListener("mouseup", checkFanicerEnd, false);
+    // }
+    // /* END HOVER PICTURES */
 
 
     var animation = false,
@@ -265,6 +263,84 @@ var JL = (function() {
   //   }
   //
   // };
+
+  JL.dragDrop = {
+    lastCord : [],
+    target: null,
+    targetList: [],
+    resetBtn: document.getElementById("reset-thumbs"),
+    reset: function(e) {
+
+      this.targetList.forEach(function(ele) {
+
+        ele.style.webkitTransform = "";
+        ele.style.MozTransform = "";
+        ele.style.msTransform = "";
+        ele.style.OTransform = "";
+        ele.style.transform = "";
+        ele.children[0].classList.remove("expanded");
+
+      });
+
+      this.resetBtn.style.display = "none";
+
+    },
+    drag: function(e) {
+      // e.preventDefault();
+      // e.target.style.display = "none";
+      var x = e.clientX;
+      var y = e.clientY;
+      this.target = e.target.parentElement;
+      // console.log(e);
+
+      var translatePos = this.target.style.transform;
+      if ( translatePos ) {
+        var cords = translatePos.replace("px","").replace("translate(","").replace(")",'').split(",");
+        x -= parseInt(cords[0]);
+        y -= parseInt(cords[1]);
+      }
+
+      this.lastCord = [x,y];
+      // e.dataTransfer.setData("id", e.target.id);
+    },
+    drop: function(e) {
+      e.preventDefault();
+
+      achievements.activateAchievement('DRAGSTER');
+
+      var y = e.clientY;
+      var x = e.clientX;
+
+      var lastX = this.lastCord[0];
+      var lastY = this.lastCord[1];
+
+      var diffX = x - lastX;
+      var diffY = y - lastY;
+      var scale = ' scale(1)';
+
+      // if ( this.target.className.indexOf("expanded") === -1 ) {
+      //   scale = ' scale(1)';
+      // }
+
+      // this.target.style.transform = "translate(" + diffX + "px, " + diffY + "px) " + scale;
+      this.target.style.webkitTransform = "translate(" + diffX + "px, " + diffY + "px) " + scale;
+      this.target.style.MozTransform = "translate(" + diffX + "px, " + diffY + "px) " + scale;
+      this.target.style.msTransform = "translate(" + diffX + "px, " + diffY + "px) " + scale;
+      this.target.style.OTransform = "translate(" + diffX + "px, " + diffY + "px) " + scale;
+      this.target.style.transform = "translate(" + diffX + "px, " + diffY + "px) " + scale;
+
+      if (this.targetList.indexOf(this.target) === -1) {
+        this.targetList.push(this.target);
+      }
+      if ( this.resetBtn ) {
+        this.resetBtn.style.display = "inline-block";
+      }
+
+    },
+    allowDrop: function(e) {
+      e.preventDefault();
+    }
+  };
 
   JL.robot = {
     headline: document.getElementById("headlineRobot"),
@@ -479,8 +555,8 @@ var JL = (function() {
       'HUECHANGER',
       'USETHESOURCE',
       'HUNTRESS',
-      'FANCIER',
       'ROBOTRELATIONS',
+      'DRAGSTER',
     ],
     details: [
       {
@@ -536,12 +612,12 @@ var JL = (function() {
         points: '200',
       },
       {
-        toAchieve: 'Engage in extended gazing',
-        points: '500',
-      },
-      {
         toAchieve: 'Meet FØRM',
         points: '200',
+      },
+      {
+        toAchieve: 'Drag and Drop like a Pro',
+        points: '100',
       },
     ],
     achieving: false,
@@ -617,6 +693,12 @@ var JL = (function() {
     stopClose: function (e) {
       e.stopPropagation();
     },
+    externalClose: function (e) {
+      console.log('stoped');
+      e.stopPropagation();
+      // var stateObj = { screenClosed: true };
+      // history.replaceState(stateObj, "Joey Lea", window.location.pathname);
+    },
     removeAchievements : function() {
       this.achieving = false;
       this.aBox.classList.remove('activate');
@@ -627,13 +709,38 @@ var JL = (function() {
       document.body.classList.add("achievements");
     },
     removeScreen : function () {
+
+      if ( document.body.className.split(" ").indexOf("lock") === -1) {
+        return false;
+      }
+
+      if ( window.location.hash.length > 1 ) {
+        var stateObj = { screenClosed: true };
+        history.pushState(stateObj, "Joey Lea", window.location.pathname);
+      }
+
       document.body.classList.remove("lock");
       document.body.classList.remove("cv");
       document.body.classList.remove("all");
       document.body.classList.remove("achievements");
-      var stateObj = { };
-      history.replaceState(stateObj, "Joey Lea", "");
+
       // window.location.hash = "#/";
+      // return false;
+      //
+      //
+      //
+      // document.body.classList.remove("lock");
+      // document.body.classList.remove("cv");
+      // document.body.classList.remove("all");
+      // document.body.classList.remove("achievements");
+      //
+      // if ( window.location.hash && window.location.hash !== "#/"  ) {
+      //   var stateObj = { screenClosed: true };
+      //   history.replaceState(stateObj, "Joey Lea", window.location.pathname);
+      //   console.log('push state');
+      // }
+
+      // history.replaceState(stateObj, "Joey Lea", "");
     },
     toggleScreen : function () {
       document.body.classList.toggle("lock");

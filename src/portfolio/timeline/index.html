@@ -15,8 +15,8 @@ layout: master.html
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">Timeline</h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline portfolio-headline" data-magic-number="-8">Timeline</h1>
+      <p class="tagline " data-magic-number="100" >
         Timeline is an easy way to showcase events. Timeline's features include autoplay, early preview, and custom timers.
         It uses no external JavaScript dependencies and works on IE11 and all other major browsers.
         <br><br><br>
@@ -24,6 +24,17 @@ layout: master.html
         &nbsp;
         <a href="https://github.com/ovdojoey/timeline" class="btn btn-border" target="_blank">Github</a>
       </p>
+      <div class="project-screenshots">
+        <div class="thumb">
+          <img src="/img/timeline_sss_1.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Timeline">
+        </div>
+        <div class="thumb">
+          <img src="/img/timeline_sss_2.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Timeline">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
+        </div>
+      </div>
    </div>
  </div>
 </div>
@@ -34,7 +45,7 @@ layout: master.html
     Timeline was built with JavaScript, HTML and CSS.
   </p>
   <div class="project-footer-links">
-    <a href="https://chrome.google.com/webstore/detail/web-time-tracker/hfhhlhelfbijnejjdihdfchakekadhbg" class="btn btn-border btn-block btn-block-half" target="_blank">See Extension</a>
-    <a href="https://bitbucket.org/w3by/webdev-time-tracker" class="btn btn-border btn-block btn-block-half" target="_blank">View the Repo</a>
+    <a href="http://old.joeylea.com/timeline/" class="btn btn-border btn-block btn-block-half" target="_blank">View Example</a>
+    <a href="https://github.com/ovdojoey/timeline" class="btn btn-border btn-block btn-block-half" target="_blank">View the Repo</a>
   </div>
 </div>

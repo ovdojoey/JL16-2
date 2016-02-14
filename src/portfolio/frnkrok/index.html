@@ -16,24 +16,27 @@ body: frnkrok
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">FRNKROK</h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline portfolio-headline" data-magic-number="-8">FRNKROK</h1>
+      <p class="tagline" data-magic-number="100" >
         Frnkrok is a DJ and Producer from Orlando, Florida.  He needed a unique and appealing website to showcase his work.
         <br><br><br>
         <a href="http://frnkrok.webby.rocks/" class="btn btn-border" target="_blank">Visit Website</a>
       </p>
       <div class="project-screenshots">
         <div class="thumb">
-          <img src="/img/frnkrok_sss_1.png" title="Frnkrok Homepage">
+          <img src="/img/frnkrok_sss_1.png" class="dragDrop" onclick="this.classList.toggle('expanded');" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Frnkrok Homepage">
         </div>
         <div class="thumb">
-          <img src="/img/frnkrok_sss_2.png" title="Frnkrok Events">
+          <img src="/img/frnkrok_sss_2.png" class="dragDrop" onclick="this.classList.toggle('expanded');" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Frnkrok Events">
         </div>
         <div class="thumb">
-          <img src="/img/frnkrok_sss_3.png" title="Frnkrok About">
+          <img src="/img/frnkrok_sss_3.png" class="dragDrop" onclick="this.classList.toggle('expanded');" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Frnkrok About">
         </div>
         <div class="thumb">
-          <img src="/img/frnkrok_sss_4.png" title="Frnkrok Social">
+          <img src="/img/frnkrok_sss_4.png" class="dragDrop" onclick="this.classList.toggle('expanded');" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Frnkrok Social">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
         </div>
       </div>
    </div>

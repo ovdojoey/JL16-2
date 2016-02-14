@@ -15,8 +15,8 @@ layout: master.html
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">Mobile Beat</h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline  portfolio-headline" data-magic-number="-8">Mobile Beat</h1>
+      <p class="tagline " data-magic-number="100" >
     Mobile Beat contacted me about a redesign of their website.
     They are using WordPress and wanted something unique, easy to navigate and memorable.
     I went to work and created them a custom WordPress theme and helped perform the migration.
@@ -24,6 +24,17 @@ layout: master.html
 
         <a href="http://mobilebeat.com" class="btn btn-border" target="_blank">Mobile Beat</a>
       </p>
+      <div class="project-screenshots">
+        <div class="thumb">
+          <img src="/img/mobilebeat_sss_1.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Mobile Beat Home">
+        </div>
+        <div class="thumb">
+          <img src="/img/mobilebeat_sss_2.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Mobile Beat Topics">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
+        </div>
+      </div>
    </div>
  </div>
 </div>

@@ -1,0 +1,4 @@
+ErrorDocument 404 /404/index.php
+
+RewriteEngine On
+RewriteRule ^portfolio\/(.*.).html$ /portfolio/$1 [R=301]

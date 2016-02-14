@@ -23,7 +23,7 @@ layout: master.html
       </p>
      </div>
      <div class="content_img_box no-select">
-       <a class="img_handle" onmouseover="window.JL.achievements.activateAchievement('HOVERER')" id="hover-picture"></a>
+       <a class="img_handle" onmouseover="window.JL.achievements.activateAchievement('HOVERER')" draggable="true" ondragstart="JL.dragDrop.drag(event)" id="hover-picture"></a>
        <img src="/img/dark_glitter.jpg" class="content_img lightbox">
      </div>
    </div>
@@ -90,7 +90,7 @@ layout: master.html
        </p>
      </div>
      <div class="content_img_box no-select">
-       <a class="img_handle" onmouseover="window.JL.achievements.activateAchievement('HOVERER')" onclick="window.JL.pictures.hueRotate('color_blot_picture')"></a>
+       <a class="img_handle" onmouseover="window.JL.achievements.activateAchievement('HOVERER')" draggable="true" ondragstart="JL.dragDrop.drag(event)"  onclick="window.JL.pictures.hueRotate('color_blot_picture')"></a>
        <img src="/img/leaves.jpeg" id="color_blot_picture" class="content_img" data-rotation="0">
      </div>
    </div>

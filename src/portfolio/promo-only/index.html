@@ -15,13 +15,21 @@ layout: master.html
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">Promo Only</h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline  portfolio-headline" data-magic-number="-8">Promo Only</h1>
+      <p class="tagline " data-magic-number="100" >
 I have worked for Promo Only since November 2011. In 2013 I launched the new PromoOnly.com but it has gone through many iterations and improvements since then.
 The site was built with PHP, jQuery, HTML and CSS and payment processing is done with the Paypal API.
         <br><br><br>
         <a href="http://promoonly.com/" class="btn btn-border" target="_blank">Visit Website</a>
       </p>
+      <div class="project-screenshots">
+        <div class="thumb">
+          <img src="/img/promo_only_ss1.jpg" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Promo Only Home">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
+        </div>
+      </div>
    </div>
  </div>
 </div>
@@ -33,7 +41,6 @@ The site was built with PHP, jQuery, HTML and CSS and payment processing is done
   </p>
   <img src="/img/dj_headphones.svg" class="stagger-left" style="width: 1590px;">
 
-  <img src="/img/promo_only_ss1.jpg" class="max-100">
   <div class="project-footer-links">
     <a href="http://promoonly.com" class="btn btn-border btn-block" target="_blank">Visit Website</a>
   </div>

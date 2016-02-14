@@ -15,13 +15,28 @@ layout: master.html
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">Promo Only <small>UK &amp; Europe</small></h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline  portfolio-headline" data-magic-number="-8">Promo Only <small>UK &amp; Europe</small></h1>
+      <p class="tagline" data-magic-number="100" >
         We launched the new PromoOnly.com last year and our UK/Europe office was chomping at the bit for a new website as well.
          Using Britt Hahn's initial Promo Only design for inspiration, I developed this website with Laravel, Bootstrap, Stripe and jQuery.
         <br><br><br>
         <a href="http://promoonly.uk" class="btn btn-border" target="_blank">Visit Website</a>
       </p>
+      <div class="project-screenshots">
+        <div class="thumb">
+          <img src="/img/pouk_sss_1.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Promo Only UK">
+        </div>
+        <div class="thumb">
+          <img src="/img/pouk_sss_2.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Promo Only UK">
+        </div>
+        <div class="thumb">
+          <img src="/img/pouk_sss_3.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Promo Only UK">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
+        </div>
+      </div>
+        <!-- <img src="" class="max-100"> -->
    </div>
  </div>
 </div>
@@ -31,7 +46,7 @@ layout: master.html
   <p class="scrollnimate brief" data-magic-number="-10">
     PromoOnly.uk was built with Laravel, Bootstrap, HTML5, Sass, and some light JS.  Payments are powered by Stripe and the site runs off dedicated hardware out in the UK.
   </p>
-  <img src="/img/po_uk_ss_1.png" class="max-100">
+
   <div class="project-footer-links">
     <a href="http://promoonly.uk" class="btn btn-border btn-block" target="_blank">Visit Website</a>
   </div>

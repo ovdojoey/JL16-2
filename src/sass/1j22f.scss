@@ -194,7 +194,9 @@ body{
     min-width: 325px;
     right: 0;
     background: #efefec;
+    background: #111;
     color: #111;
+    color: #999;
     left: auto;
     transform: translateX(100%);
     transition: transform 400ms, height 0s 400ms, width 0s 400ms;
@@ -265,20 +267,20 @@ body{
         text-align: center;
         font-family: "Oswald", serif;
         text-transform: uppercase;
-        color: #0d0f0b;
+        color: #eee;
       }
       .btn{
-        color:#333;
+        color:#eee;
         &:hover{
-          color: #111;
+          color: #fff;
         }
       }
       .resume-title{
         font-size: 2.4rem;
-        color: #0d0f0b;
+        color: #fff;
       }
       .resume-highlights{
-        color: #555;
+        color: #999;
         font-size: 17px;
         font-family: "Georgia", serif;
         list-style: none;
@@ -379,6 +381,7 @@ body{
   // }
   .achievements {
     text-align: center;
+    padding-bottom: 50px;
     .achievements-title{
       text-transform: uppercase;
       font-weight: 400;
@@ -552,11 +555,12 @@ body{
   color: #888;
   font-family: "Georgia", serif;
   display: block;
-  z-index: 100;
+  z-index: 2;
   position: fixed;
   transition: transform 400ms;
   top: 0;
   width: 100%;
+  // max-width: 300px;
   max-width: 800px;
   display: flex;
   flex-wrap: nowrap;
@@ -567,10 +571,13 @@ body{
   .quick-link{
     float: right;
     width: 10%;
-    text-align: right;
     background: transparent;
+    text-align: left;
     span{
-      padding: 0 5px;
+      padding: 0 4px;
+    }
+    @media(min-width: 800px) {
+      text-align: right;
     }
   }
   &.scroll{
@@ -588,6 +595,7 @@ body{
     position: relative;
     background: #0d0f0b;
     margin: 0;
+    z-index: 3;
 
     &:hover{
       color: #fff;
@@ -622,17 +630,42 @@ body{
   height: 100vh;
   min-height: 640px;
 
+  @media(max-height: 800px) {
+    height: auto;
+    padding: 60px 0 125px 0;
+  }
+
   .project-screenshots{
     clear: both;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     // padding-top: 45px;
     // background: #141414;
+    // .reset-thumbs{
+    // }
+    .reset-thumbs{
+      width: 100%;
+      display: block;
+    }
+    #reset-thumbs{
+
+      display: none;
+      opacity: 0;
+      animation: fadeIn 1s 1 forwards;
+    }
     @media(min-width: 600px){
       text-align: right;
+      justify-content: flex-end;
+
     }
     .thumb {
       display: inline-block;
-      margin: -10px 0;
+      margin: -10px 10px;
+      transition: transform 425ms cubic-bezier(0.175, 0.885, 0.32, 1.025);
+
       @media(min-width: 600px) {
         margin: auto -25px;
       }
@@ -643,18 +676,26 @@ body{
       box-sizing: border-box;
       position: relative;
       max-width: 180px;
-      transition: transform 425ms cubic-bezier(0.175, 0.885, 0.32, 1.225);
+      transition: transform 425ms cubic-bezier(0.175, 0.885, 0.32, 1.225), opacity 300ms;
       transform:  translateX(0) scale(0.5);
       transform-origin: 50% 50%;
-      z-index: 1;
+      z-index: 2;
+      opacity: 0.6;
+      display: inline-block;
       &:hover{
         transform: translateX(0) scale(1);
-        z-index: 2;
+        z-index: 4;
+        cursor: pointer;
+        opacity: 1;
       }
-      &:focus,&:active{
+      &.expanded{
         // border-color: #fff;
         transform: translateX(0) scale(2);
-        z-index: 2;
+        z-index: 3;
+        opacity: 1;
+      }
+      &.expanded:hover{
+        z-index: 5;
       }
       @media (min-width: 600px) {
         transform:  translateX(50%) scale(0.5);
@@ -662,9 +703,9 @@ body{
         &:hover{
           transform: translateX(12.5%) scale(1);
         }
-        &:focus,&:active{
-          transform: translateX(-125%) scale(2.5);
-          cursor: none;
+        &:focus,&:active,&.expanded{
+          transform: translateX(-75%) scale(2);
+          // cursor: none;
         }
       }
     }
@@ -844,7 +885,7 @@ body{
       height: 24px;
       display: block;
       background: rgba(254,255,255,0.8);
-      top: 280px;
+      top: 200px;
       left: -20px;
       z-index: 1;
       line-height: 40px;
@@ -966,6 +1007,7 @@ body{
       transition: color 300ms;
       text-decoration: none;
       display: block;
+      font-weight: 400;
 
       &:hover{
         color: #eee;
@@ -1436,6 +1478,7 @@ h1.headline{
   text-decoration: none;
   display: inline-block;
   padding: 5px;
+  cursor: pointer;
 
 
   &:hover,&:focus{

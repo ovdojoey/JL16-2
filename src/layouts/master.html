@@ -1,13 +1,13 @@
 {{> header }}
   <section class="sidebar-fixed cv" onclick="window.JL.achievements.stopClose(event);">
-    <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
+    <a class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
     <div class="sidebar_content">
       <h4 class="resume-title">Curriculum vitae</h4>
       <h5 class="resume-highlights-title">Highlights</h5>
       <ul class="resume-highlights">
-        <li>Fast, independent worker</li>
-        <li>3 years lead web developer experience</li>
-        <li>A project finisher</li>
+        <li>Self-motivated fast worker</li>
+        <li>Lead web developer experience</li>
+        <li>A project starter and finisher</li>
         <li>Creative, passionate, and design oriented</li>
         <li>Highly skilled in PHP, JavaScript, HTML5, Sass/CSS, and SQL</li>
       </ul>
@@ -17,61 +17,61 @@
     </div>
   </section>
   <section class="sidebar-fixed portfolio">
-    <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
+    <a class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
     <div class="sidebar_content">
       <div class="shift-down"></div>
-      <a href="/" class="projects-title">Home</a>
-      <a href="/portfolio/" class="projects-title">Portfolio</a>
+      <a href="/" class="projects-title" onclick="window.JL.achievements.externalClose(event)">Home</a>
+      <a href="/portfolio/" class="projects-title" onclick="window.JL.achievements.externalClose(event)">Portfolio</a>
       <ul class="portfolio-list">
-        <a href="/portfolio/jl-v2/">
+        <a href="/portfolio/jl-v2/" onclick="window.JL.achievements.externalClose(event)">
           <li>JL v2</li>
         </a>
-        <a href="/portfolio/frnkrok/">
+        <a href="/portfolio/frnkrok/" onclick="window.JL.achievements.externalClose(event)">
           <li>Frnkrok</li>
         </a>
-        <a href="/portfolio/juiced/">
+        <a href="/portfolio/juiced/" onclick="window.JL.achievements.externalClose(event)">
           <li>Juiced</li>
         </a>
-        <a href="/portfolio/pates-law/">
+        <a href="/portfolio/pates-law/" onclick="window.JL.achievements.externalClose(event)">
           <li>Pates Law</li>
         </a>
-        <a href="/portfolio/promo-only-uk/">
+        <a href="/portfolio/promo-only-uk/" onclick="window.JL.achievements.externalClose(event)">
           <li>Promo Only UK / Europe</li>
         </a>
-        <a href="/portfolio/web-time-tracker/">
+        <a href="/portfolio/web-time-tracker/" onclick="window.JL.achievements.externalClose(event)">
           <li>Web Time Tracker</li>
         </a>
-        <a href="/portfolio/timeline/">
+        <a href="/portfolio/timeline/" onclick="window.JL.achievements.externalClose(event)">
           <li>Timeline</li>
         </a>
-        <a href="/portfolio/jl-v1/">
+        <a href="/portfolio/jl-v1/" onclick="window.JL.achievements.externalClose(event)">
           <li>JL v1</li>
         </a>
-        <a href="/portfolio/welli/">
+        <a href="/portfolio/welli/" onclick="window.JL.achievements.externalClose(event)">
           <li>Welli</li>
         </a>
-        <a href="/portfolio/the-brick-story/">
+        <a href="/portfolio/the-brick-story/" onclick="window.JL.achievements.externalClose(event)">
           <li>The Brick Story</li>
         </a>
-        <a href="/portfolio/anne-marie-bowen/">
+        <a href="/portfolio/anne-marie-bowen/" onclick="window.JL.achievements.externalClose(event)">
           <li>Anne-Marie Bowen, Esq.</li>
         </a>
-        <a href="/portfolio/promo-only/">
+        <a href="/portfolio/promo-only/" onclick="window.JL.achievements.externalClose(event)">
           <li>Promo Only</li>
         </a>
-        <a href="/portfolio/pom/">
+        <a href="/portfolio/pom/" onclick="window.JL.achievements.externalClose(event)">
           <li>POM - Orders Management</li>
         </a>
-        <a href="/portfolio/mobile-beat/">
+        <a href="/portfolio/mobile-beat/" onclick="window.JL.achievements.externalClose(event)">
           <li>Mobile Beat</li>
         </a>
       </ul>
-      <a href="/contact" class="projects-title">Contact</a>
+      <a href="/contact" class="projects-title" onclick="window.JL.achievements.externalClose(event)">Contact</a>
 
     </div>
   </section>
-  <section class="achievements-fixed">
-    <a href="#/" class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
+  <section class="achievements-fixed" onclick="window.JL.achievements.removeScreen()">
+    <a class="exit" onclick="window.JL.achievements.removeScreen()">&times;</a>
     <!-- <div class="avatars">
       <div class="avatar-swap-box no-select">
         <div class="last" onclick="window.JL.avatars.swapLeft(event)"><span class="arrow">&larr;</span></div>
@@ -100,7 +100,7 @@
 
     </div>
   </section>
-  <section class="body">
+  <section class="body" >
     <div class="body_container" id="animation_body_container">
 
       {{{contents}}}

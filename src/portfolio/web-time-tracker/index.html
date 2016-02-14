@@ -15,8 +15,8 @@ layout: master.html
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">Web Time Tracker</h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline  portfolio-headline" data-magic-number="-8">Web Time Tracker</h1>
+      <p class="tagline" data-magic-number="100" >
 A Chrome Extension that allows you to track your time spent using the browser.
 This was mainly designed as a proof of concept and also to familarize myself with building a Chrome Extension.
  It was built purely with JavaScript, HTML and Sass.
@@ -25,6 +25,20 @@ This was mainly designed as a proof of concept and also to familarize myself wit
         &nbsp;
         <a href="https://bitbucket.org/w3by/webdev-time-tracker" class="btn btn-border" target="_blank">View The Repo</a>
       </p>
+      <div class="project-screenshots">
+        <div class="thumb">
+          <img src="/img/webdev_sss_1.png" class="dragDrop" onclick="this.classList.toggle('expanded');" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Web Time Tracker">
+        </div>
+        <div class="thumb">
+          <img src="/img/webdev_sss_2.png" class="dragDrop" onclick="this.classList.toggle('expanded');" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Web Time Project">
+        </div>
+        <div class="thumb">
+          <img src="/img/webdev_sss_3.png" class="dragDrop" onclick="this.classList.toggle('expanded');" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="Goals">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
+        </div>
+      </div>
    </div>
  </div>
 </div>

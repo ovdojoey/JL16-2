@@ -15,13 +15,30 @@ layout: master.html
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">The Brick Story</h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline  portfolio-headline" data-magic-number="-8">The Brick Story</h1>
+      <p class="tagline " data-magic-number="100" >
 This was a wedding website created for two friends. All the designs were done by the bride, Britt Daley, and I coded the HTML, CSS/LESS, JavaScript and animations.
 The site was built with jQuery and looking back there is a lot I would do differently to make it a smoother experience!
         <br><br><br>
         <a href="http://thebrickstory.us/" class="btn btn-border" target="_blank">Visit Website</a>
       </p>
+      <div class="project-screenshots">
+        <div class="thumb">
+          <img src="/img/brick_sss_1.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="The Brick Story">
+        </div>
+        <div class="thumb">
+          <img src="/img/brick_sss_2.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="The Brick Story Screenshot">
+        </div>
+        <div class="thumb">
+          <img src="/img/brick_sss_3.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="The Brick Story Screenshot">
+        </div>
+        <div class="thumb">
+          <img src="/img/brick_sss_4.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="The Brick Story Screenshot">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
+        </div>
+      </div>
    </div>
  </div>
 </div>

@@ -15,13 +15,27 @@ layout: master.html
 <div class="section-group juiced">
   <div class="content">
     <div class="content_text">
-      <h1 class="headline scrollnimate portfolio-headline" data-magic-number="-8">POM <small>Orders Management</small></h1>
-      <p class="tagline scrollnimate" data-magic-number="100" >
+      <h1 class="headline portfolio-headline" data-magic-number="-8">POM <small>Orders Management</small></h1>
+      <p class="tagline" data-magic-number="100" >
 In 2013, Promo Only was using outdated billing software and had no way to effectively process online orders.
  I was tasked with building a new online based system to replace outdated in-house ordering tools.
 Using PHP and the Paypal API, I developed a new system for our sales reps to process orders. These tools would later be migrated to the PromoOnly.com website.
         <br><br>
       </p>
+      <div class="project-screenshots">
+        <div class="thumb">
+          <img src="/img/pom_sss_1.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="POM Home">
+        </div>
+        <div class="thumb">
+          <img src="/img/pom_sss_2.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="POM Admin">
+        </div>
+        <div class="thumb">
+          <img src="/img/pom_sss_3.png" onclick="this.classList.toggle('expanded')" draggable="true" ondragstart="JL.dragDrop.drag(event)" title="POM Customer">
+        </div>
+        <div class="reset-thumbs">
+          <a id="reset-thumbs" class="btn" onclick="JL.dragDrop.reset()">reset thumbnails</a>
+        </div>
+      </div>
    </div>
  </div>
 </div>
