@@ -1,4 +1,5 @@
 var Metalsmith = require('metalsmith');
+var htmlMinifier = require("metalsmith-html-minifier");
 var autoprefixer = require('metalsmith-autoprefixer');
 var sass = require('metalsmith-sass');
 var cleanCSS = require('metalsmith-clean-css');
@@ -25,6 +26,7 @@ Metalsmith(__dirname)
       reverse: true
     }
   }))
+
   .use(layouts({
     "engine" : "handlebars",
     "directory" : "src/layouts",
@@ -36,6 +38,7 @@ Metalsmith(__dirname)
   .use(uglify())
   .use(autoprefixer())
   .use(cleanCSS())
+  .use(htmlMinifier())
   .use(
     watch({
       paths: {

@@ -555,7 +555,8 @@ body{
   color: #888;
   font-family: "Georgia", serif;
   display: block;
-  z-index: 2;
+  z-index: 5;
+  pointer-events: none;
   position: fixed;
   transition: transform 400ms;
   top: 0;
@@ -595,7 +596,8 @@ body{
     position: relative;
     background: #0d0f0b;
     margin: 0;
-    z-index: 3;
+    z-index: 5;
+    pointer-events: auto;
 
     &:hover{
       color: #fff;
@@ -642,10 +644,14 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    // padding-top: 45px;
+    padding-top: 65px;
     // background: #141414;
     // .reset-thumbs{
     // }
+
+    @media(min-width: 600px ) {
+      padding-top: 0;
+    }
     .reset-thumbs{
       width: 100%;
       display: block;
@@ -1389,7 +1395,7 @@ body{
   padding: 20px 0;
   text-align: center;
   width: 100%;
-  z-index: 2;
+  z-index: 4;
   position: relative;
   &.header-nav{
     margin-top: 20px;
@@ -1416,6 +1422,7 @@ body{
     font-size: 15px;
     color: #888;
     font-weight: 400;
+
     &.active{
       border: 1px solid #eee;
       color: #eee;
