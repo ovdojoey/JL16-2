@@ -6,7 +6,7 @@ layout: master.html
 <nav class="header-nav">
   <a href="/">HOME</a>
   <a href="/portfolio/">PORTFOLIO</a>
-  <a href="/contact/" class="active">CONTACT</a>
+  <a href="/contact/">CONTACT</a>
 </nav>
 <div class="heading-links scroll" id="heading-links-fixed">
   <nav>
